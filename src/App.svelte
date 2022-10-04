@@ -12,22 +12,6 @@
     rss.items.forEach(item => {
       feed.push({title: item.title, link: typeof item.link == "string" ? item.link : item.link[4].href, description: (item.description && item.description.length > 0) ? item.description.replace(/(<([^>]+)>)/ig, "") : undefined, pubDate: item.published, image: item.media.thumbnail ? item.media.thumbnail.url : undefined})
     })
-    // feed = []
-    // await fetch(RSS_URL)
-    // .then(response => response.text())
-    // .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
-    // .then(data => {
-    //   console.log(data)
-    //   const media = data.querySelector("rss").attributes.getNamedItem("xmlns:media")
-    //   const nameSpace = media ? media.value : undefined;
-    //   const items = data.querySelectorAll("item");
-    //   items.forEach(el => {
-    //     const mediaContent = nameSpace ? [].slice.call(el.getElementsByTagNameNS(nameSpace, "content"))[0] : undefined
-    //     const mediaThumbnail = nameSpace ? [].slice.call(el.getElementsByTagNameNS(nameSpace, "thumbnail"))[0] : undefined
-    //     const imageURL = mediaContent?.attributes?.url ? mediaContent.attributes.url.value : mediaThumbnail ? mediaThumbnail.attributes.url.value : undefined
-    //     feed.push({title: cleanString(el.querySelector("title").innerHTML), link: el.querySelector("link").innerHTML, description: cleanString(el.querySelector("description").innerHTML), pubDate: el.querySelector("pubDate").innerHTML, image: imageURL})
-    //   });
-    // });
     feed = feed;
   }
   $: fetchRSS($selected.url)
