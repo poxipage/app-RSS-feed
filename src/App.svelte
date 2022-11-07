@@ -18,7 +18,7 @@
 </script>
 
 <div class="h-full w-full justify-center items-center">
-  <h2> {$selected.title} </h2>
+  <h2 class="text-base-content"> {$selected.title} </h2>
   {#each feed as entry}
     <RssEnrty {entry} />
   {/each}
