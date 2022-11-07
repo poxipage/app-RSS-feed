@@ -1,6 +1,6 @@
 <script lang="ts">
-    import * as dayjs from 'dayjs'
-    import * as relativeTime from 'dayjs/plugin/relativeTime'
+    import dayjs from 'dayjs'
+    import relativeTime from 'dayjs/plugin/relativeTime'
     dayjs().format()
     dayjs.extend(relativeTime)
 
@@ -16,9 +16,9 @@
         <img src={entry.image} class="image" height="auto" />
     {/if}
     <div>
-        <p style="font-weight: bold;">{entry.title}</p>
+        <p class="text-base-content" style="font-weight: bold;">{entry.title}</p>
         {#if entry.description && typeof entry.description == "string"}
-            <p>{entry.description}</p>
+            <p class="text-base-content">{entry.description}</p>
         {/if}
     </div>
 </a>

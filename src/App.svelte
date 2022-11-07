@@ -8,21 +8,12 @@
   async function fetchRSS(RSS_URL) {
     feed = []
     let rss = await parse(RSS_URL)
-    console.log(rss)
     rss.items.forEach(item => {
       feed.push({title: item.title, link: typeof item.link == "string" ? item.link : item.link[4].href, description: (item.description && item.description.length > 0) ? item.description.replace(/(<([^>]+)>)/ig, "") : undefined, pubDate: item.published, image: item.media.thumbnail ? item.media.thumbnail.url : undefined})
     })
     feed = feed;
   }
   $: fetchRSS($selected.url)
-
-  function cleanString(dirtystring: string) {
-    console.log(dirtystring)
-    const temp = dirtystring.split('<![CDATA[')
-    const clean = temp[temp.length - 1].split(']]>')[0]
-    console.log(clean)
-    return clean
-  }
 
 </script>
 
